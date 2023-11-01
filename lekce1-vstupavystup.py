@@ -1,0 +1,7 @@
+cislo1 = int(input("zadej první číslo: "))
+cislo2 = int(input("zadej druhé číslo: "))
+print("První číslo je: ", cislo1, "druhé číslo je", cislo2)
+print("Součet čísel je ", cislo1 + cislo2)
+print("Rozdíl čísel je ", cislo1 - cislo2)
+print("Součin čísel je ", cislo1 * cislo2)
+print("Podíl čísel je ", cislo1 / cislo2)
