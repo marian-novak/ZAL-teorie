@@ -23,7 +23,7 @@ if vzdalenost < r1 - r2:
 if vzdalenost < r2 - r1:
    print("Kruznice #1 lezi uvnitr kruznice #2")
 
-if vzdalenost == r1 + r2:
+if vzdalenost > r1 + r2:
     print("Kruznice lezi vne sebe")
 
 if vzdalenost < r1 + r2:
