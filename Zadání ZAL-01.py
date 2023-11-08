@@ -36,5 +36,5 @@ if isclose(vzdalenost,(r1 - r2)) and r1 > r2:
 if isclose(vzdalenost,(r2 - r1)) and r2 > r1:
     print("Vnitrni dotyk, kruznice #1 lezi uvnitr kruznice #2")
 
-if (r1 - r2) < vzdalenost < (r1 + r2) and vzdalenost != (r2 - r1) and vzdalenost > (r2 - r1):
+if (r1 - r2) < vzdalenost < (r1 + r2) and vzdalenost > (r2 - r1):
         print("Kruznice se protinaji")
