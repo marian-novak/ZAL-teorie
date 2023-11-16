@@ -28,7 +28,7 @@ strana32 = sqrt((x12 - x32)**2 + (y12 - y32)**2)
 obvod1 = strana1 + strana2 + strana3
 obvod2 = strana12 + strana22 + strana32
 
-if (strana1 + strana2 > strana3) or (strana2 + strana3 > strana1) or (strana1 + strana3 > strana1) or (strana12 + strana22 > strana32) or (strana12 + strana32 > strana22) or (strana22 + strana32 > strana12):
+if (strana1 + strana2 <= strana3) or (strana2 + strana3 <= strana1) or (strana1 + strana3 <= strana1) or (strana12 + strana22 <= strana32) or (strana12 + strana32 <= strana22) or (strana22 + strana32 <= strana12):
     print("Body netvori trojuhelnik")
 
 elif isclose(strana1,strana12) or isclose(strana1,strana22) or isclose(strana1,strana32) and isclose(strana2,strana12) or isclose(strana2,strana22) or isclose(strana2,strana32) and isclose(strana3,strana12) or isclose(strana3,strana22) or isclose(strana3,strana32):
