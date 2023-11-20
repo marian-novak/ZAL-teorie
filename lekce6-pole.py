@@ -1,5 +1,5 @@
 pocet = int(input("Kolik chces zadat cisel?: "))
-polecisel = [69] * pocet
+polecisel = [0] * pocet
 
 i = 0
 while i < pocet:
@@ -9,5 +9,5 @@ while i < pocet:
 i = 0
 
 while i < pocet:
-    print(polecisel[i])
+    print(polecisel[i] + 1)
     i = i + 1 
