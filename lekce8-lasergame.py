@@ -11,9 +11,14 @@ skupiny[1] = skupiny[1] + den2 + " hraji: "
 
 vstup = ""
 while vstup != "konec":
-    jmeno = input("Zadej jmeno hrace: ")
+    vstup = input("Zadej jmeno hrace: ")
+    if vstup == "konec":
+        break
     skupina = int(input("Zadej cislo skupiny (0,1): "))
-    skupiny[skupina] = skupiny[skupina] + vstup + ","
+    if skupina != 0 and skupina != 1:
+        print("Tato skupina neexistuje!")
+    else:
+        skupiny[skupina] = skupiny[skupina] + vstup + ","
 
 print(skupiny[0])
 print(skupiny[1])
