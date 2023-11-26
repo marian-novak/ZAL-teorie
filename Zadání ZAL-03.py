@@ -1,6 +1,8 @@
 from math import sqrt
+
 od = int(input("Zadejte N: "))
 do = int(input("Zadejte M: "))
+
 cislo = od
 while cislo <= do:
     if cislo >= 2:
