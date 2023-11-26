@@ -1,20 +1,16 @@
-from math import isclose
+od = int(input("Zadejte N: "))
+do = int(input("Zadejte M: "))
 
-od = int(input("Zadejte M: "))
-do = int(input("Zadejte N: "))
-
-jeprvo = True
-while od >= 0:
-    if (od % 2 != 0) and (od % 3 != 0) and (od % 5 != 0) and (od % 7 != 0) and od != 1:
-        print(od)
-    if od == 2:
-        print(od)
-    if od == 3:
-        print(od)
-    if od == 5:
-        print(od)
-    if od == 7:
-        print(od)
-    od = od + 1
-    if od > do:
-        break
+cislo = od
+while cislo <= do:
+    if cislo >= 2:
+        je_prvocislo = True
+        i = 2
+        while i <= int(cislo**0.5):
+            if cislo % i == 0:
+                je_prvocislo = False
+                break
+            i = i + 1
+        if je_prvocislo:
+            print(cislo)
+    cislo = cislo + 1
