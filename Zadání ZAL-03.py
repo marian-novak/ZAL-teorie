@@ -1,12 +1,12 @@
+from math import sqrt
 od = int(input("Zadejte N: "))
 do = int(input("Zadejte M: "))
-
 cislo = od
 while cislo <= do:
     if cislo >= 2:
         je_prvocislo = True
         i = 2
-        while i <= int(cislo**0.5):
+        while i <= sqrt(cislo):
             if cislo % i == 0:
                 je_prvocislo = False
                 break
