@@ -6,12 +6,12 @@ do = int(input("Zadejte M: "))
 while od <= do:
     if od >= 2:
         je_prvocislo = True
-        i = 2
-        while i <= sqrt(od):
-            if od % i == 0:
+        delitel = 2
+        while delitel <= sqrt(od):
+            if od % delitel == 0:
                 je_prvocislo = False
                 break
-            i = i + 1
+            delitel = delitel + 1
         if je_prvocislo:
             print(od)
     od = od + 1
