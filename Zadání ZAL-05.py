@@ -1,128 +1,52 @@
 import sys
-def kontrola(minuty, hodiny, dny, mesic, rok):
-    if minuty > 59 or minuty < 1:
+def kontrolaMinuty(minuty):
+    if minuty > 60 or minuty < 0:
         return False
-        print("Chyba!")
-    elif minuty < 61 or minuty > 0:
+    else:
         return True
-    if hodiny > 23 or hodiny < 1:
+def kontrolaHodiny(hodiny):
+    if hodiny > 23 or hodiny < 0:
         return False
-        print("Chyba!")
-    elif hodiny > 0 or hodiny < 25:
+    else:
         return True
-    if mesic > 12 or mesic < 1:
-        return False
-        print("Chyba!")
-    elif mesic > 0 or mesic < 13:
-        return True
-    if mesic == 1:
-        leden = 0
-        dny = leden
-        if leden > 31 or leden < 1:
-            return False
-            print("Chyba!")
-        else:
-            return True
-    if mesic == 2 and ((rok % 4 == 0 or rok % 400 == 0) and rok % 4000 != 0 and rok % 100 != 0): 
-        punor = 0
-        dny = punor
-        if punor > 29 or punor < 1:
-            return False
-            print("Chyba!")
-        else:
-            return True
-    elif mesic == 2:
-        unor = 0
-        dny = unor
-        if unor > 28 or unor < 1:
-            return False
-            print("Chyba!")
-        else:
-            return True
-    if mesic == 3:
-        brezen = 0
-        dny = brezen
-        if brezen > 31 or brezen < 1:
-            return False
-            print("Chyba!")
-        else:
-            return True
-    if mesic == 4:
-        duben = 0
-        dny = duben
-        if duben > 30 or duben < 1:
-            return False
-            print("Chyba!")
-        else:
-            return True
-    if mesic == 5:
-        kveten = 0
-        dny = kveten
-        if kveten > 31 or kveten < 1:
-            return False
-            print("Chyba!")
-        else:
-            return True
-    if mesic == 6:
-        cerven = 0
-        cerven = cerven
-        if cerven > 30 or cerven < 1:
-            return False
-            print("Chyba!")
-        else:
-            return True
-    if mesic == 7:
-        cervenec = 0
-        dny = cervenec
-        if cervenec > 31 or cervenec < 1:
-            return False
-            print("Chyba!")
-        else:
-            return True
-    if mesic == 8:
-        srpen = 0
-        dny = srpen
-        if srpen > 31 or srpen < 1:
-            return False
-            print("Chyba!")
-        else:
-            return True
-    if mesic == 9:
-        zari = 0
-        dny = zari
-        if zari > 30 or zari < 1:
-            return False
-            print("Chyba!")
-        else:
-            return True
-    if mesic == 10:
-        rijen = 0
-        dny = rijen
-        if rijen > 31 or rijen < 1:
-            return False
-            print("Chyba!")
-        else:
-            return True
-    if mesic == 11:
-        listopad = 0
-        dny = listopad
-        if listopad > 30 or listopad < 1:
-            return False
-            print("Chyba!")
-        else:
-            return True
-    if mesic == 12:
-        prosinec = 0
-        dny = prosinec
-        if prosinec > 31 or prosinec < 1:
-            return False
-            print("Chyba!")
-        else:
-            return True
+def kontrolaRok(rok):
     if rok < 1600:
         return False
-        print("Chyba!")
-    elif rok > 1599:
+    else:
+        return True
+def kontrolaMesic(mesic):
+    if mesic > 12 or mesic < 1:
+        return False
+    else:
+        return True
+def kontrolaDen(den, mesic, rok):
+    if mesic == 1 and (den < 1 or den > 31):
+        return False
+    if mesic == 2 and rok % 4 == 0 and (rok % 400 + rok % 100 == 0) and (den < 1 or den > 29) and rok % 4000 != 0:
+        return False
+    if mesic == 2 and (den < 1 or den > 28) and rok % 4 != 0 or (rok % 400 + rok % 100 != 0) or rok % 4000 == 0:
+        return False
+    if mesic == 3 and (den < 1 or den > 31):
+        return False
+    if mesic == 4 and (den < 1 or den > 30):
+        return False
+    if mesic == 5 and (den < 1 or den > 31):
+        return False
+    if mesic == 6 and (den < 1 or den > 30):
+        return False
+    if mesic == 7 and (den < 1 or den > 31):
+        return False
+    if mesic == 8 and (den < 1 or den > 31):
+        return False
+    if mesic == 9 and (den < 1 or den > 30):
+        return False    
+    if mesic == 10 and (den < 1 or den > 31):
+        return False
+    if mesic == 11 and (den < 1 or den > 30):
+        return False
+    if mesic == 12 and (den < 1 or den > 31):
+        return False
+    else:
         return True
 def kontrolaData(cislo):
     try:
@@ -199,7 +123,19 @@ if kontrolaData(rokod) == False:
     sys.exit()
 else:
     rokod = int(rokod)
-if kontrola(minutyod, hodinyod, denod, mesicod, rokod) == False:
+if kontrolaMinuty(minutyod) == False:
+    print("Chyba!")
+    sys.exit()
+if kontrolaHodiny(hodinyod) == False:
+    print("Chyba!")
+    sys.exit()
+if kontrolaRok(rokod) == False:
+    print("Chyba!")
+    sys.exit()
+if kontrolaMesic(mesicod) == False:
+    print("Chyba!")
+    sys.exit()
+if kontrolaDen(denod, mesicod, rokod) == False:
     print("Chyba!")
     sys.exit()
 
@@ -248,6 +184,18 @@ if kontrolaData(rokdo) == False:
     sys.exit()
 else:
     rokdo = int(rokdo)
-if kontrola(minutydo, hodinydo, dendo, mesicdo, rokdo) == False:
+if kontrolaMinuty(minutydo) == False:
+    print("Chyba!")
+    sys.exit()
+if kontrolaHodiny(hodinydo) == False:
+    print("Chyba!")
+    sys.exit()
+if kontrolaRok(rokdo) == False:
+    print("Chyba!")
+    sys.exit()
+if kontrolaMesic(mesicdo) == False:
+    print("Chyba!")
+    sys.exit()
+if kontrolaDen(dendo, mesicdo, rokdo) == False:
     print("Chyba!")
     sys.exit()
