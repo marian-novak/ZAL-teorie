@@ -1,6 +1,11 @@
 import sys
+def kontrolaPrestupnyrok(rok):
+    if ((rok % 4 == 0 and rok % 100 != 0) or (rok % 400 == 0)) and rok % 4000 != 0:
+        return True
+    else:
+        return False
 def kontrolaMinuty(minuty):
-    if minuty > 60 or minuty < 0:
+    if minuty >= 60 or minuty < 0:
         return False
     else:
         return True
@@ -22,9 +27,9 @@ def kontrolaMesic(mesic):
 def kontrolaDen(den, mesic, rok):
     if mesic == 1 and (den < 1 or den > 31):
         return False
-    if mesic == 2 and rok % 4 == 0 and (rok % 400 + rok % 100 == 0) and (den < 1 or den > 29) and rok % 4000 != 0:
+    if mesic == 2 and (den < 1 or den > 28) and kontrolaPrestupnyrok(rok) == False:
         return False
-    if mesic == 2 and (den < 1 or den > 28) and (rok % 4 != 0 or (rok % 400 + rok % 100 != 0) or rok % 4000 == 0):
+    if mesic == 2 and (den < 1 or den > 29) and kontrolaPrestupnyrok(rok) == True:
         return False
     if mesic == 3 and (den < 1 or den > 31):
         return False
@@ -63,16 +68,18 @@ def kontrolaVstupucas(indexCas):
         return False
     else:
         return True
-def kontrolaJestliJeOdVetsiNeJesteDelsiTatoDefiniceNemuzeBytLolololololo(minutyod, hodinyod, dnyod, mesicod, rokod, minutydo, hodinydo, dendo, mesicdo, rokdo):
+def kontrolaJestliJeOdVetsiNeJesteDelsiTatoDefiniceNemuzeBytLolololololo(minutyod, hodinyod, denod, mesicod, rokod, minutydo, hodinydo, dendo, mesicdo, rokdo):
+    if rokod == rokdo and mesicod == mesicdo and denod == dendo and hodinyod == hodinydo and minutyod == minutydo:
+        return True
     if rokod > rokdo:
         return False
     if mesicod > mesicdo and rokod >= rokdo:
         return False
     if denod > dendo and mesicod >= mesicdo and rokod >= rokdo:
         return False
-    if hodinyod > hodinydo and denod >= dendo and mesicod >= mesicdo and rokod >= rokdo:
+    if hodinyod > hodinydo and denod >= dendo and mesicod >= mesicdo and rokod > rokdo:
         return False
-    if minutyod >= minutydo and hodinyod >= hodinydo and denod >= dendo and mesicod >= mesicdo and rokod >= rokdo:
+    if minutyod > minutydo and hodinyod >= hodinydo and denod >= dendo and mesicod >= mesicdo and rokod >= rokdo:
         return False
     else:
         return True
@@ -216,65 +223,76 @@ if kontrolaJestliJeOdVetsiNeJesteDelsiTatoDefiniceNemuzeBytLolololololo(minutyod
     print("Chyba!")
     sys.exit()
 
-while minutyod != minutydo:
-    if mesicod == 1 and denod == 31:
-        mesicod += 1
-        denod = 1
-    if mesicod == 2 and denod and (rokod % 4 != 0 or (rokod % 400 + rokod % 100 != 0) or rokod % 4000 == 0):
-        mesicod += 1
-        denod = 1
-    if mesicod == 2 and rokod % 4 == 0 and (rokod % 400 + rokod % 100 == 0) and rokod % 4000 != 0 and denod == 29:
-        mesicod += 1
-        denod = 1
-    if mesicod == 3 and denod == 31:
-        mesicod += 1
-        denod = 1
-    if mesicod == 4 and denod == 30:
-        mesicod += 1
-        denod = 1
-    if mesicod == 5 and denod == 31:
-        mesicod += 1
-        denod = 1
-    if mesicod == 6 and denod == 30:
-        mesicod += 1
-        denod = 1
-    if mesicod == 7 and denod == 31:
-        mesicod += 1
-        denod = 1
-    if mesicod == 8 and denod == 31:
-        mesicod += 1
-        denod = 1
-    if mesicod == 9 and denod == 30:
-        mesicod += 1
-        denod = 1
-    if mesicod == 10 and denod == 31:
-        mesicod += 1
-        denod = 1
-    if mesicod == 11 and denod == 30:
-        mesicod += 1
-        denod = 1
-    if mesicod == 12 and denod == 31:
-        mesicod = 1
-        denod = 1
-        rokod += 1
+if minutyod == minutydo and hodinyod == hodinydo and denod == dendo and mesicod == mesicdo and rokod == rokdo:
+    if hodinyod > 12:
+        kuku += (hodinyod - 12)
+    else:
+        kuku += hodinyod
+    if hodinyod == 0:
+        kuku += 12
+
+while (minutyod != minutydo) or (hodinyod != hodinydo) or (denod != dendo) or (mesicod != mesicdo) or (rokod != rokdo):
+    if minutyod == 0 and hodinyod >= 13:
+        kuku += (hodinyod - 12)
+    if minutyod == 0 and hodinyod <= 12:
+        kuku += hodinyod
+    if minutyod == 0 and hodinyod == 0:
+        kuku += 12
+    if minutyod == 30:
+        kuku += 1
+    if minutyod < 60:
+        minutyod += 1
+    if minutyod == 60:
+        minutyod = 0
+        hodinyod += 1
     if hodinyod == 24:
         hodinyod = 0
         denod += 1
-    if minutyod < 60:
-        minutyod += 1
-    if minutyod == 30:
-        kuku += 1
-    if minutyod == 60 and hodinyod > 12 and hodinyod != 0:
-        kuku += (hodinyod - 12)
-        minutyod = 0
-        hodinyod += 1
-    if minutyod == 60 and hodinyod < 13 and hodinyod != 0:
-        kuku += hodinyod
-        minutyod = 0
-        hodinyod += 1
-    if minutyod == 60 and hodinyod == 0:
-        kuku += 12
-        minutyod = 0
-        hodinyod += 1
-
+    if mesicod == 1 and denod == 31:
+        mesicod += 1
+        denod = 0
+    if mesicod == 2 and denod == 29 and kontrolaPrestupnyrok(rokod) == True:
+        mesicod += 1
+        denod = 0
+    if mesicod == 2 and denod == 28 and kontrolaPrestupnyrok(rokod) == False:
+        mesicod += 1
+        denod = 0
+    if mesicod == 3 and denod == 31:
+        mesicod += 1
+        denod = 0
+    if mesicod == 4 and denod == 30:
+        mesicod += 1
+        denod = 0
+    if mesicod == 5 and denod == 31:
+        mesicod += 1
+        denod = 0
+    if mesicod == 6 and denod == 30:
+        mesicod += 1
+        denod = 0
+    if mesicod == 7 and denod == 31:
+        mesicod += 1
+        denod = 0
+    if mesicod == 8 and denod == 31:
+        mesicod += 1
+        denod = 0
+    if mesicod == 9 and denod == 30:
+        mesicod += 1
+        denod = 0
+    if mesicod == 10 and denod == 31:
+        mesicod += 1
+        denod = 0
+    if mesicod == 11 and denod == 30:
+        mesicod += 1
+        denod = 0
+    if mesicod == 12 and denod == 31:
+        mesicod = 1
+        denod = 0
+        rokod += 1
+    if minutyod == minutydo and hodinyod == hodinydo and denod == dendo and mesicod == mesicdo and rokod == rokdo and minutyod == 0:
+        if hodinyod > 12:
+            kuku += (hodinyod - 12)
+        else:
+            kuku += hodinyod
+        if hodinyod == 0:
+            kuku += 12
 print("Kukačka zakukala", kuku,"x")
