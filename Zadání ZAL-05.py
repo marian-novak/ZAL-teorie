@@ -57,7 +57,8 @@ def kontrolaData(cislo):
     try:
         cislo = int(cislo)
         return True
-    except ValueError: return False
+    except ValueError:
+        return False
 def kontrolaVstupudatum(indexDatum):
     if len(indexDatum) != 4:
         return False
