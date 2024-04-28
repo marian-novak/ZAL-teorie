@@ -1,3 +1,6 @@
-pole = ["+i","a"]
-pole[0].replace("+","")
-print(pole[0])
+
+mez = " "
+pole = ["i", ["i","a"], "e"]
+pole[1] = mez.join(pole[1])
+pole[1] = pole[1].split()
+print(pole)
