@@ -1,6 +1,5 @@
 import pickle
 ucty ={}
-uctynovy = {}
 while True:
     vsechno = input("Prikaz: ")
     vsechno = vsechno.split(" ")
@@ -84,7 +83,7 @@ while True:
 
     try:
         if vsechno[0] == "ulozit":
-                with open((vsechno[1],".pkl"), "wb") as file:
+                with open(vsechno[1], "wb") as file:
                     pickle.dump(ucty, file)
                 print("Bankovní databáze byla úspěšně uložena.")
     except:
@@ -94,6 +93,7 @@ while True:
         if vsechno[0] == "nacist":
             with open(vsechno[1], "rb") as file:
                 ucty = pickle.load(file)
+                print("Účty byly úspěšně načteny.")
     except:
         print("Napsal jsi neco spatne lol.")
     if vsechno[0] != "urok" and vsechno[0] != "vklad" and vsechno[0] != "vyber" and vsechno[0] != "poplatek" and vsechno[0] != "vypis" and vsechno[0] != "ulozit" and vsechno[0] != "nacist":
